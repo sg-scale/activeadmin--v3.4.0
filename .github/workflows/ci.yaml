@@ -71,7 +71,7 @@ jobs:
       - name: Create test app
         run: bin/rake setup
       - name: Restore cached RSpec runtimes
-        uses: actions/cache@v4
+        uses: actions/cache@v6
         with:
           path: tmp/parallel_runtime_rspec.log
           key: runtimes-rspec-${{ matrix.ruby }}-${{ matrix.deps }}-${{ hashFiles('tmp/parallel_runtime_rspec.log') }}
@@ -82,7 +82,7 @@ jobs:
           bin/parallel_rspec
           RSPEC_FILESYSTEM_CHANGES=true bin/rspec
       - name: Restore cached cucumber runtimes
-        uses: actions/cache@v4
+        uses: actions/cache@v6
         with:
           path: tmp/parallel_runtime_cucumber.log
           key: runtimes-cucumber-${{ matrix.ruby }}-${{ matrix.deps }}-${{ hashFiles('tmp/parallel_runtime_cucumber.log') }}
